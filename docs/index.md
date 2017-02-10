@@ -11,6 +11,7 @@ HTC-VIVEとUnityを使用してVRプログラミングの基礎を学ぶため�
 - Unity / ver 5.5.1 ( ver 5.6ではSteamVRPluginがうまく動かないとのレポートがありますので、5.5を使用してください)
 - SteamVR Unity Plugin /  ver 1.2.0
 - Windows 10
+
 ---
 
 ## 学習の流れとサンプルプログラムの構造
@@ -18,7 +19,7 @@ HTC-VIVEとUnityを使用してVRプログラミングの基礎を学ぶため�
 ### 1. VR-monitor - HMD/コントローラーの状態をモニターする方法を学びます
 
 - VRMonitor - SteamVR Pluginを通してVIVEデバイスの情報を取得する方法を解説します
-[001 - VRモニタリング（前編）](001-VRモニタリング (後編).md)
+[001 - VRモニタリング（前編）](index.md)
 [[001 - VRモニタリング（後編）]]
 
 ### 2. VR-controller - VR空間でプレイヤーの入力を扱う方法を学びます
