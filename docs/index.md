@@ -19,7 +19,7 @@ HTC-VIVEとUnityを使用してVRプログラミングの基礎を学ぶため�
 ### 1. VR-monitor - HMD/コントローラーの状態をモニターする方法を学びます
 
 - VRMonitor - SteamVR Pluginを通してVIVEデバイスの情報を取得する方法を解説します
-[001 - VRモニタリング（前編）](index.md)
+[001 - VRモニタリング（前編）]({{ site.base_url }}index.md)
 [[001 - VRモニタリング（後編）]]
 
 ### 2. VR-controller - VR空間でプレイヤーの入力を扱う方法を学びます
