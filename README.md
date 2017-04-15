@@ -8,5 +8,5 @@ Materials for studying VR Programming on Unity.
 Unityに慣れていないエンジニアでも2〜3週間程度で基本部分を終えられるようになっています。
 （Unity自体の使い方については、この教材には含まれておりません。）
 
-実際の講義の内容は下記のWikiに記載されております
+実際の講義の内容は下記のWikiを参照ください  
 [VRStudies-Wiki](https://github.com/yumemi-inc/vr-studies/wiki/Home/_edit)  
