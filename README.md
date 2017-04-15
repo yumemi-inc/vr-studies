@@ -9,4 +9,4 @@ Unityに慣れていないエンジニアでも2〜3週間程度で基本部分�
 （Unity自体の使い方については、この教材には含まれておりません。）
 
 実際の講義の内容は下記のWikiを参照ください  
-[VRStudies-Wiki](https://github.com/yumemi-inc/vr-studies/wiki/Home/_edit)  
+[VRStudies-Wiki](https://github.com/yumemi-inc/vr-studies/wiki)  
