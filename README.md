@@ -7,8 +7,7 @@ VR Studiesは、株式会社ゆめみにて作成した、VRプログラミン�
 
 
 > 実際の講義の内容は下記のWikiを参照してください  
-> [VRStudies-Wiki](https://github.com/yumemi-inc/vr-studies/wiki)  /  
-> [VRStudies-LP](https://www.yumemi.co.jp/vrstudies/)  
+> [VRStudies-Wiki](https://github.com/yumemi-inc/vr-studies/wiki) / [VRStudies-LP](https://www.yumemi.co.jp/vrstudies/)  
 
 
 <img src="https://www.yumemi.co.jp/vrstudies/img/logo.png" width="100%">
