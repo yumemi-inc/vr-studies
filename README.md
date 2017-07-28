@@ -1,5 +1,9 @@
 # VR-Studies
 
+VR Studiesは、株式会社ゆめみにて作成した、VRプログラミングの基礎を学ぶためのサンプルプログラム集です。  
+これらのプログラムを通して、Unityを使用したVRアプリ開発の基本を学ぶことができます。
+
+
 <img src="https://www.yumemi.co.jp/vrstudies/img/logo.png" width="100%">
 
 
