@@ -1,0 +1,181 @@
+fileFormatVersion: 2
+guid: 4c16383d8348940389bfa1467e67523b
+timeCreated: 1496737781
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Camera_Body_MeshPart0
+    100002: Camera_Body_MeshPart1
+    100004: Camera_Body_MeshPart2
+    100006: Camera_FCC_Text
+    100008: Camera_FCC_Text_2
+    100010: Camera_Plate
+    100012: Camera_TV_Box
+    100014: //RootNode
+    100016: Stand_Base
+    100018: Stand_Connection
+    100020: Stand_Focus_Control
+    100022: Stand_Hand_Rail
+    100024: Stand_Handle
+    100026: Stand_Handle_1
+    100028: Stand_Handle_2
+    100030: Stand_Head
+    100032: Stand_Main_Body
+    100034: Stand_Plate
+    100036: Stand_Tube_Inner
+    100038: Stand_Tube_Outer
+    100040: Stand_Tube_Top
+    400000: Camera_Body_MeshPart0
+    400002: Camera_Body_MeshPart1
+    400004: Camera_Body_MeshPart2
+    400006: Camera_FCC_Text
+    400008: Camera_FCC_Text_2
+    400010: Camera_Plate
+    400012: Camera_TV_Box
+    400014: //RootNode
+    400016: Stand_Base
+    400018: Stand_Connection
+    400020: Stand_Focus_Control
+    400022: Stand_Hand_Rail
+    400024: Stand_Handle
+    400026: Stand_Handle_1
+    400028: Stand_Handle_2
+    400030: Stand_Head
+    400032: Stand_Main_Body
+    400034: Stand_Plate
+    400036: Stand_Tube_Inner
+    400038: Stand_Tube_Outer
+    400040: Stand_Tube_Top
+    2300000: Camera_Body_MeshPart0
+    2300002: Camera_Body_MeshPart1
+    2300004: Camera_Body_MeshPart2
+    2300006: Camera_FCC_Text
+    2300008: Camera_FCC_Text_2
+    2300010: Camera_Plate
+    2300012: Camera_TV_Box
+    2300014: Stand_Base
+    2300016: Stand_Connection
+    2300018: Stand_Focus_Control
+    2300020: Stand_Hand_Rail
+    2300022: Stand_Handle
+    2300024: Stand_Handle_1
+    2300026: Stand_Handle_2
+    2300028: Stand_Head
+    2300030: Stand_Main_Body
+    2300032: Stand_Plate
+    2300034: Stand_Tube_Inner
+    2300036: Stand_Tube_Outer
+    2300038: Stand_Tube_Top
+    3300000: Camera_Body_MeshPart0
+    3300002: Camera_Body_MeshPart1
+    3300004: Camera_Body_MeshPart2
+    3300006: Camera_FCC_Text
+    3300008: Camera_FCC_Text_2
+    3300010: Camera_Plate
+    3300012: Camera_TV_Box
+    3300014: Stand_Base
+    3300016: Stand_Connection
+    3300018: Stand_Focus_Control
+    3300020: Stand_Hand_Rail
+    3300022: Stand_Handle
+    3300024: Stand_Handle_1
+    3300026: Stand_Handle_2
+    3300028: Stand_Head
+    3300030: Stand_Main_Body
+    3300032: Stand_Plate
+    3300034: Stand_Tube_Inner
+    3300036: Stand_Tube_Outer
+    3300038: Stand_Tube_Top
+    4300000: Camera_Body_MeshPart0
+    4300002: Camera_Body_MeshPart1
+    4300004: Camera_Body_MeshPart2
+    4300006: Camera_FCC_Text
+    4300008: Camera_FCC_Text_2
+    4300010: Camera_Plate
+    4300012: Camera_TV_Box
+    4300014: Stand_Base
+    4300016: Stand_Connection
+    4300018: Stand_Focus_Control
+    4300020: Stand_Hand_Rail
+    4300022: Stand_Handle
+    4300024: Stand_Handle_1
+    4300026: Stand_Handle_2
+    4300028: Stand_Head
+    4300030: Stand_Main_Body
+    4300032: Stand_Plate
+    4300034: Stand_Tube_Inner
+    4300036: Stand_Tube_Outer
+    4300038: Stand_Tube_Top
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
