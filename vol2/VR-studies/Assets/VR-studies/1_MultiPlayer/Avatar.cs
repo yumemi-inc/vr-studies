@@ -17,7 +17,7 @@ public class Avatar : Photon.MonoBehaviour {
 			//アバターの名前を変更する
 			ChangeMyName( "Player-Id:" + PhotonNetwork.player.ID );
 
-			// 定期的にアバターの色を変更する
+			//定期的にアバターの色を変更する
 			StartCoroutine( "ChangeMyColor" );
 		}
 	}

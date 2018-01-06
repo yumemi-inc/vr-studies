@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace VRStudies { namespace MultiPlayer {
+namespace VRStudies { namespace MultiPlayer { 
 
 public class PhotonLogin : MonoBehaviour {
 
