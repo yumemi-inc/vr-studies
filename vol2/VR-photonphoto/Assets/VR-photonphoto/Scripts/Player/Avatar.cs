@@ -52,9 +52,9 @@ namespace VRAcademy {
 
 			//自クライアント所有の名前を変更する
 			this.gameObject.name = name;
-			transform.FindChild ("Name").gameObject.GetComponent<TextMesh>().text = name;
+			transform.Find ("Name").gameObject.GetComponent<TextMesh>().text = name;
 			//transform.FindChild ("Name").gameObject.GetComponent<TextMesh>().fontSize = 25;
-			transform.FindChild ("Name").gameObject.GetComponent<TextMesh>().color = new Color( 0.8f, 0, 1 );
+			transform.Find ("Name").gameObject.GetComponent<TextMesh>().color = new Color( 0.8f, 0, 1 );
 		}
 
 		void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
@@ -72,7 +72,7 @@ namespace VRAcademy {
 
 				// 名前の変更を反映する
 				this.gameObject.name = otherName;
-				transform.FindChild ("Name").gameObject.GetComponent<TextMesh>().text = otherName;
+				transform.Find ("Name").gameObject.GetComponent<TextMesh>().text = otherName;
 			}
 		}
 

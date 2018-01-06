@@ -44,9 +44,9 @@ namespace VRAcademy {
 			Debug.Log("PlayerManager: 自分のアバターを生成しました: Name:" + avatar.gameObject.name);
 
 			// カメラUIとアクションUIにアバターをセットする
-			cameraUI = transform.FindChild("Camera UI").gameObject.GetComponent<CameraUIController>();
+			cameraUI = transform.Find("Camera UI").gameObject.GetComponent<CameraUIController>();
 			cameraUI.Setup( avatar );
-			actionUI = transform.FindChild("Action UI").gameObject.GetComponent<ActionUIController>();
+			actionUI = transform.Find("Action UI").gameObject.GetComponent<ActionUIController>();
 			actionUI.Setup( avatar );
 
 			//アバターの名前にプレイヤー名をセットする

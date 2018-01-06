@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
 		avatar.transform.parent = transform;	
 
 		// カメラを自身のアバターの子にする
-		GameObject camera = transform.FindChild("Camera").gameObject;
+		GameObject camera = transform.Find("Camera").gameObject;
 		camera.transform.parent = avatar.transform;
 	}
 }

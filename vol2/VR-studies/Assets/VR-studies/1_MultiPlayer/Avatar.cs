@@ -49,7 +49,7 @@ public class Avatar : Photon.MonoBehaviour {
 		
 		//自分のアバターの名前を変更する
 		this.gameObject.name = name;
-		transform.FindChild ("NameUI").gameObject.GetComponent<TextMesh>().text = name;
+		transform.Find ("NameUI").gameObject.GetComponent<TextMesh>().text = name;
 	}
 
 	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
@@ -67,7 +67,7 @@ public class Avatar : Photon.MonoBehaviour {
 
 			// 名前の変更を反映する
 			this.gameObject.name = otherName;
-			transform.FindChild ("NameUI").gameObject.GetComponent<TextMesh>().text = otherName;
+			transform.Find ("NameUI").gameObject.GetComponent<TextMesh>().text = otherName;
 		}
 	}
 

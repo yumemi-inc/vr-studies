@@ -35,7 +35,7 @@ public class SpotUIController : MonoBehaviour {
 	void SetUpAnchors ( float radius, int num, float offset = 0f, bool isFlip = false ) {
 
 		//スポットアンカーを円形に並べる
-		GameObject spot = transform.FindChild ("Spot").gameObject;
+		GameObject spot = transform.Find ("Spot").gameObject;
 		for( int i = 0; i < num; i++  ){
 
 			GameObject copy = Object.Instantiate (spot);

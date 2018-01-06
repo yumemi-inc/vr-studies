@@ -52,15 +52,15 @@ namespace VRAcademy {
 			Debug.Log("PlayerManager: アバターを生成しました: Name:" + avatar.gameObject.name);
 
 			// カメラUIとアクションUIにアバターをセットする
-			cameraUI = transform.FindChild("Camera UI").gameObject.GetComponent<CameraUIController>();
+			cameraUI = transform.Find("Camera UI").gameObject.GetComponent<CameraUIController>();
 			cameraUI.Setup( avatar );
-			actionUI = transform.FindChild("Action UI").gameObject.GetComponent<ActionUIController>();
+			actionUI = transform.Find("Action UI").gameObject.GetComponent<ActionUIController>();
 			actionUI.Setup( avatar );
 
 			//アバターの名前にプレイヤー名をセットする
 			avatar.gameObject.name = "ME" + " - Id:" + PhotonNetwork.player.ID;
 			avatar.GetComponent<Avatar>().ChangeName ( avatar.gameObject.name );
-			avatar.transform.FindChild ("Name").gameObject.GetComponent<TextMesh>().color = Color.yellow;
+			avatar.transform.Find ("Name").gameObject.GetComponent<TextMesh>().color = Color.yellow;
 
 			// テスト用に複数プレイヤーを生成
 			for( int i = 0; i < 10; i++ ){

@@ -35,7 +35,7 @@ public class GvrGazePointer : MonoBehaviour {
 
 	void Start() {
 
-		Image indicator = transform.FindChild ("Canvas/Indicator").GetComponent<Image>();
+		Image indicator = transform.Find ("Canvas/Indicator").GetComponent<Image>();
 		gazePointerImpl.OnStart( indicator );
 
 		gazePointerImpl.MaterialComp = gameObject.GetComponent<Renderer>().material;

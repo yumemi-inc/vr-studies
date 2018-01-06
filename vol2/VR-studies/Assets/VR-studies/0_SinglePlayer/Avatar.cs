@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace VRStudies { namespace SinglePlayer {
 
-public class Avatar : Photon.MonoBehaviour {
+public class Avatar : MonoBehaviour {
 
 	//------------------------------------------------------------------------------------------------------------------------------//
 	void Start () {

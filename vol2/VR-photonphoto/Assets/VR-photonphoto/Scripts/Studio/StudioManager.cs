@@ -101,7 +101,7 @@ namespace VRAcademy {
 				var polaroid = GameObject.Instantiate( prefab );
 				polaroid.transform.parent = transform;
 
-				GameObject photo = polaroid.transform.FindChild("Photo").gameObject;
+				GameObject photo = polaroid.transform.Find("Photo").gameObject;
 				//GameObject photo = transform.FindChild("Polaroid/Photo").gameObject;
 
 				if( Random.value < 0.5f ){

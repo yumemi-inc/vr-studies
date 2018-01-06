@@ -23,11 +23,11 @@ namespace VRAcademy {
 			avatar = _avatar;
 
 			// カメラポジションの取得
-			frontPos = avatar.transform.FindChild ("Position/Front").transform;
+			frontPos = avatar.transform.Find ("Position/Front").transform;
 			if ( isFirstPerson ) {
-				defaultPos = avatar.transform.FindChild("Position/First");
+				defaultPos = avatar.transform.Find("Position/First");
 			} else {
-				defaultPos = avatar.transform.FindChild ("Position/Third");
+				defaultPos = avatar.transform.Find ("Position/Third");
 			}
 				
 			//カメラ位置を変更する
