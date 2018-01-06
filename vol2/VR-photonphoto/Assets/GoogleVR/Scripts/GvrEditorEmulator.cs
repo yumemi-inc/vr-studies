@@ -38,7 +38,8 @@ public class GvrEditorEmulator : MonoBehaviour {
   [Tooltip("Camera to track")]
   public Camera m_camera;
 
-#if UNITY_EDITOR && UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_IOS)
+#if UNITY_EDITOR
+//#if UNITY_EDITOR && UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_IOS)
   void Start()
   {
     GvrRecenterOnlyController controllerOnlyRecenter =
@@ -55,10 +56,10 @@ public class GvrEditorEmulator : MonoBehaviour {
 
   void Update()
   {
-    if (GvrController.Recentered)
-    {
-      Recenter();
-    }
+//    if (GvrController.Recentered)
+//    {
+//      Recenter();
+//    }
 
     Quaternion rot;
     bool rolled = false;
@@ -92,7 +93,9 @@ public class GvrEditorEmulator : MonoBehaviour {
 
   public void Recenter()
   {
-#if UNITY_EDITOR && UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_IOS)
+
+#if UNITY_EDITOR
+//#if UNITY_EDITOR && UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_IOS)
     if (m_isRecenterOnlyController)
     {
       return;
