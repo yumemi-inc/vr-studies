@@ -8,58 +8,60 @@ using UnityEngine;
 using System.Collections;
 using DG.Tweening;
 
-namespace VRAcademy {
+using Photon.Pun;
+using Photon.Realtime;
 
-	public class PhotonStatus : Photon.PunBehaviour {
+namespace VRStudies {
+
+	public class PhotonStatus : MonoBehaviourPunCallbacks {
 
 		TextMesh monitor = null;
 
 		//------------------------------------------------------------------------------------------------------------------------------//
 		void Start(){
 			monitor = this.GetComponent<TextMesh>();
-			Application.logMessageReceived  += OnLogMessage;
 		}
 
 		void Update () {
 
 			// Photon接続状況を画面に出力
-			monitor.text = "* Photon *\n" + PhotonNetwork.connectionStateDetailed.ToString();
+			if ( PhotonNetwork.InRoom == false ) {
+				monitor.text = "* Photon *\n" + PhotonNetwork.NetworkClientState.ToString();
+			}
 		}
 
 		//------------------------------------------------------------------------------------------------------------------------------//
-		void OnJoinedRoom() {
+		public override void OnJoinedRoom() {
 
 			//ログイン後数秒後にロガーを消す
-			DOVirtual.DelayedCall ( 3f, ()=> gameObject.SetActive(false) );
+			DOVirtual.DelayedCall ( 3f, ()=> monitor.text = null );
 		}
 
 		//------------------------------------------------------------------------------------------------------------------------------//
-		void OnLogMessage( string logText, string stackTrace, LogType type ){
-			
-			// ログを画面に出力
-			//monitor.text = "\n" + logText;
-		}
+		public override void OnPlayerEnteredRoom( Photon.Realtime.Player other  ) {
 
-		//------------------------------------------------------------------------------------------------------------------------------//
-		public override void OnPhotonPlayerConnected( PhotonPlayer other  ) {
+			monitor.text = "他のプレイヤーが接続 No: " + other.ActorNumber;
+			monitor.text += "\n現在のプレイヤー数 : " + PhotonNetwork.CurrentRoom.PlayerCount;
 
-			monitor.text = "他のプレイヤーが接続 ID: " + other.ID;
-			monitor.text += "\n現在のプレイヤー数 : " + PhotonNetwork.room.PlayerCount;
+			// 数秒後にロガーを消す
 			Debug.Log ( monitor.text );
+			DOVirtual.DelayedCall ( 3f, ()=> monitor.text = null );
 		}
 
-		public override void OnPhotonPlayerDisconnected( PhotonPlayer other  ) {
+		public override void OnPlayerLeftRoom( Photon.Realtime.Player other  ) {
 
 			// 他プレイヤの切断時
-			monitor.text = "他のプレイヤーが切断 ID: " + other.ID;
-			monitor.text += "\n現在のプレイヤー数 : " + PhotonNetwork.room.PlayerCount;
+			monitor.text = "他のプレイヤーが切断 No: " + other.ActorNumber;
+			monitor.text += "\n現在のプレイヤー数 : " + PhotonNetwork.CurrentRoom.PlayerCount;
 
 			// 自分がマスターになったかどうか
-			if ( PhotonNetwork.isMasterClient ) {
+			if ( PhotonNetwork.IsMasterClient ) {
 				monitor.text += "\n現在あなたがルームマスターです.";
 			}
 
+			// 数秒後にロガーを消す
 			Debug.Log ( monitor.text );
+			DOVirtual.DelayedCall ( 3f, ()=> monitor.text = null );
 		}
 	}
 }

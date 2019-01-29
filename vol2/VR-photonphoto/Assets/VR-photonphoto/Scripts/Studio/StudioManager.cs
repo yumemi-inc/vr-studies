@@ -11,9 +11,11 @@ using UnityEngine;
 using UnityStandardAssets.ImageEffects;
 using DG.Tweening;
 
-namespace VRAcademy {
+using Photon.Pun;
 
-	public class StudioManager : MonoBehaviour {
+namespace VRStudies {
+
+	public class StudioManager : MonoBehaviourPunCallbacks {
 
 		//------------------------------------------------------------------------------------------------------------------------------//
 		private static StudioManager instance = null;
@@ -30,20 +32,14 @@ namespace VRAcademy {
 		RenderTexture renderTex = null;
 
 		//------------------------------------------------------------------------------------------------------------------------------//
-		#if UNITY_EDITOR
-		static string SAVE_DIR = Directory.GetCurrentDirectory() + "/Photos/";
-		#elif UNITY_ANDROID || UNITY_IOS
+		#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
 		static string SAVE_DIR = Application.persistentDataPath + "/Photos/";
+		#else
+		static string SAVE_DIR = Directory.GetCurrentDirectory() + "/Photos/";
 		#endif
 
 		//------------------------------------------------------------------------------------------------------------------------------//
 		public void Setup () {
-
-			// ステージオブジェクトとしてインスタンシエイト
-//			var counter = PhotonNetwork.InstantiateSceneObject("Prefabs/Studio/Countdown UI", Vector3.zero, Quaternion.identity, 0, null) as GameObject;
-//			counter.transform.parent = transform;
-//			counter.transform.position = new Vector3( 0, 5.4f, 8.8f );
-//			counter.GetComponent<CountDownUI>().Setup ();
 
 			// Photonログイン後にタイマーを開始
 			var counter = GameObject.Find ("Countdown UI").GetComponent<CountDownUI>();
@@ -78,7 +74,7 @@ namespace VRAcademy {
 //			tex.SetPixels(fliped);
 //			tex.Apply();
 //
-			yield return null;
+//			yield return null;
 
 			// 写真を保存する
 			string fileName = "Photo-" + System.DateTime.Now.ToString( "yyyyMMdd-HHmmss" ) + ".png";
@@ -102,7 +98,6 @@ namespace VRAcademy {
 				polaroid.transform.parent = transform;
 
 				GameObject photo = polaroid.transform.Find("Photo").gameObject;
-				//GameObject photo = transform.FindChild("Polaroid/Photo").gameObject;
 
 				if( Random.value < 0.5f ){
 					photo.transform.parent.position = new Vector3 ( -10, 10, 10 );
@@ -119,7 +114,7 @@ namespace VRAcademy {
 
 			// Slackへのアップロード
 			// マスタークライアントだけが送信を行う
-			if ( PhotonNetwork.isMasterClient ) {
+			if ( PhotonNetwork.IsMasterClient ) {
 				UploadToSlack (fileName, bytes);
 			}
 		}
@@ -130,7 +125,7 @@ namespace VRAcademy {
 				token = slackApiToken, 
 				filename = fileName, 
 				filedata = bytes, 
-				title = "VRAcademy-VRxNet",
+				title = "VRStudies-VRxNet",
 				initial_comment = "VR空間で記念撮影！！ - " + System.DateTime.Now.ToString ("yyyy/MM/dd-HH:mm:ss"),
 				channels = "#general", 
 			};

@@ -46,15 +46,14 @@ PluginImporter:
     OSXUniversal:
       enabled: 1
       settings: {}
-    PS4:
-      enabled: 1
-      settings: {}
     WP8:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
         DontProcess: False
-        PlaceholderPath: 
+        PlaceholderPath:
+        SDK: AnySDK
+        ScriptingBackend: Il2Cpp
     Web:
       enabled: 1
       settings: {}
@@ -77,14 +76,28 @@ PluginImporter:
       settings:
         CPU: AnyCPU
         DontProcess: False
-        PlaceholderPath: 
+        PlaceholderPath:
         SDK: AnySDK
         ScriptingBackend: Il2Cpp
     iOS:
       enabled: 1
       settings:
-        CompileFlags: 
-        FrameworkDependencies: 
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+        CompileFlags:
+        FrameworkDependencies:
+    tvOS:
+      enabled: 1
+      settings:
+        CompileFlags:
+        FrameworkDependencies:
+    PS4:
+      enabled: 1
+      settings: {}
+    Switch:
+      enabled: 1
+      settings: {}
+    XboxOne:
+      enabled: 1
+      settings: {}
+  userData:
+  assetBundleName:
+  assetBundleVariant:

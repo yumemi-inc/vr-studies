@@ -6,7 +6,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace VRAcademy {
+namespace VRStudies {
 	
 	public class CameraUIController : MonoBehaviour {
 

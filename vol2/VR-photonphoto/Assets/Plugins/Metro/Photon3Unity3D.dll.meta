@@ -36,11 +36,13 @@ PluginImporter:
       settings:
         CPU: AnyCPU
     WP8:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
         DontProcess: False
-        PlaceholderPath: Assets/Plugins/Photon3Unity3D.dll
+        PlaceholderPath: Assets/Photon/PhotonLibs/Photon3Unity3D.dll
+        SDK: AnySDK
+        ScriptingBackend: DotNet
     Win:
       enabled: 0
       settings:
@@ -54,7 +56,7 @@ PluginImporter:
       settings:
         CPU: AnyCPU
         DontProcess: False
-        PlaceholderPath: Assets/Plugins/Photon3Unity3D.dll
+        PlaceholderPath: Assets/Photon/PhotonLibs/Photon3Unity3D.dll
         SDK: AnySDK
         ScriptingBackend: DotNet
     iOS:

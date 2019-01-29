@@ -31,7 +31,7 @@ class GvrBuildProcessor : IPreprocessBuild {
   }
   public void OnPreprocessBuild(BuildTarget target, string path) {
     bool isAndroid = (target == BuildTarget.Android);
-    if (VRSettings.supportedDevices.Length == 0 || VRSettings.supportedDevices.Contains("None")) {
+    if (UnityEngine.XR.XRSettings.supportedDevices.Length == 0 || UnityEngine.XR.XRSettings.supportedDevices.Contains("None")) {
       EditorUtility.DisplayDialog(isAndroid ? ANDROID_ERROR_MESSAGE : IOS_ERROR_MESSAGE,
           null, "OK");
     }

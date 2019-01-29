@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using Photon.Pun;
+using Photon.Realtime;
+
 namespace VRStudies { namespace MultiPlayer {
 
-public class Floor : Photon.MonoBehaviour {
+public class Floor : MonoBehaviourPunCallbacks {
 
 	// Joinイベントをリッスン
 	//------------------------------------------------------------------------------------------------------------------------------//
-	void OnJoinedRoom() {
+	public override void OnJoinedRoom() {
 
 		// 定期的に床の色を変更する
 		StartCoroutine( "ChangeFloorColor" );
@@ -23,19 +26,19 @@ public class Floor : Photon.MonoBehaviour {
 			//定期的に部屋の色を変更する
 
 			// 自クライアントがマスタークライアントの場合のみ
-			if( PhotonNetwork.isMasterClient ){
+			if( PhotonNetwork.IsMasterClient ) {
 
 				// ルームプロパティで送信
 				var properties  = new ExitGames.Client.Photon.Hashtable();
 				properties.Add( "floorColor", new Vector3( Random.value, Random.value, Random.value ) );
-				PhotonNetwork.room.SetCustomProperties( properties );
+				PhotonNetwork.CurrentRoom.SetCustomProperties( properties );
 			}
 					
 			yield return new WaitForSeconds( 3f );
 		}
 	}
 
-	public void OnPhotonCustomRoomPropertiesChanged( ExitGames.Client.Photon.Hashtable changedProperties ){
+	public override void OnRoomPropertiesUpdate( ExitGames.Client.Photon.Hashtable changedProperties ){
 
 		// ルームプロパティから床の色を取得
 		object value = null;

@@ -1,13 +1,14 @@
-﻿	using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
 namespace VRStudies { namespace MultiPlayer {
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviourPunCallbacks {
 
 	// Joinイベントをリッスン
 	//------------------------------------------------------------------------------------------------------------------------------//
-	void OnJoinedRoom() {
+	public override void OnJoinedRoom() {
 
 		// ルームログイン後に呼ぶ
 		CreateAvatar ();

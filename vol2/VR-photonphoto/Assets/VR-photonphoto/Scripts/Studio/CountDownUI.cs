@@ -11,9 +11,12 @@ using UnityEngine;
 using UnityStandardAssets.ImageEffects;
 using DG.Tweening;
 
-namespace VRAcademy {
+using Photon.Pun;
+using Photon.Realtime;
 
-	public class CountDownUI : MonoBehaviour {
+namespace VRStudies {
+
+	public class CountDownUI : MonoBehaviourPunCallbacks, IInRoomCallbacks {
 
 		//------------------------------------------------------------------------------------------------------------------------------//
 		public int shutterSec = 10;
@@ -40,7 +43,7 @@ namespace VRAcademy {
 		void FixedUpdate () {
 
 			//マスタークライアントだけが更新する
-			if( PhotonNetwork.isMasterClient == false ){ return; }
+			if( PhotonNetwork.IsMasterClient == false ){ return; }
 			if( isActiveCounter == false ){ return; }
 
 			//一定時間ごとにカウントダウン & シャッターを切る
@@ -60,14 +63,14 @@ namespace VRAcademy {
 			// ルームプロパティでカウント送信
 			var properties  = new ExitGames.Client.Photon.Hashtable();
 			properties.Add( "secElapsed", _secElapsed );
-			PhotonNetwork.room.SetCustomProperties( properties );
+			PhotonNetwork.CurrentRoom.SetCustomProperties( properties );
 		}
 
-		public void OnPhotonCustomRoomPropertiesChanged( ExitGames.Client.Photon.Hashtable i_propertiesThatChanged ){
+		public void OnRoomPropertiesUpdate( ExitGames.Client.Photon.Hashtable property ){
 
 			// ルームプロパティでカウント更新
 			object value = null;
-			if( i_propertiesThatChanged.TryGetValue( "secElapsed", out value ) ){
+			if( property.TryGetValue( "secElapsed", out value ) ){
 				secElapsed = (int)value;
 				UpdateCounter ( shutterSec - secElapsed );
 			}

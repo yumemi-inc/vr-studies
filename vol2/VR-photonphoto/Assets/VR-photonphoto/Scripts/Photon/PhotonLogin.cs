@@ -1,65 +1,71 @@
-﻿//
-//  VR-Studies
-//  Created by miuccie miurror on 6/04/2017.
-//  Copyright 2017 Yumemi.Inc / miuccie miurror
-//
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-namespace VRAcademy {
+using Photon.Pun;
+using Photon.Realtime;
 
-	public class PhotonLogin : MonoBehaviour {
+namespace VRStudies {
+
+	public class PhotonLogin : MonoBehaviourPunCallbacks {
+
+		static string GAME_VERSION = "Ver.1";
+
+		static RoomOptions ROOM_OPTIONS = new RoomOptions() {
+			MaxPlayers = 20,
+			IsOpen = true,
+			IsVisible = true,
+			PublishUserId = true
+		};
+
+		private void Awake() {
+
+			///<summary>
+			/// MasterクライアントがPhotonNetwork.LoadLevel()を呼び出した際、接続済みのプレイヤーも自動的に
+			/// シーンが更新されるようにする処理
+			///</summary>
+			PhotonNetwork.AutomaticallySyncScene = true;
+		}
 
 		//------------------------------------------------------------------------------------------------------------------------------//
 		void Start() {
 
-			// Photonロビーに接続する - 引数の文字列で同じバージョンへアクセス
-			Debug.Log("PhotonManager: ロビーに接続します");
-			PhotonNetwork.ConnectUsingSettings( "v1.0" );
-			//PhotonNetwork.sendRate = 30;
-			//PhotonNetwork.sendRateOnSerialize = 30;
+			// アプリの起動と同時にPhotonCloudに接続
+			Debug.Log("PhotonLogin: マスターサーバーに接続します");
+			PhotonNetwork.GameVersion = GAME_VERSION;
+			PhotonNetwork.ConnectUsingSettings();
+		}
+
+		public override void OnConnectedToMaster() {
+
+			Debug.Log("PhotonLogin: マスターサーバーに接続しました");
+			Debug.Log("PhotonLogin: ルームに入室します");
+
+			// ルームへの参加 or 新規作成
+			PhotonNetwork.JoinOrCreateRoom("VR-Room", ROOM_OPTIONS, null);
 		}
 
 		//------------------------------------------------------------------------------------------------------------------------------//
-		void OnJoinedLobby() {
+		public override void OnJoinedRoom() {
 
-			Debug.Log("PhotonManager: ロビー入室成功");
-
-			// オプションを設定
-			RoomOptions roomOptions = new RoomOptions() {
-				MaxPlayers = 20,
-				IsOpen = true,
-				IsVisible = true,
-			};
-
-			// ルームの作成
-			PhotonNetwork.JoinOrCreateRoom("Main Room", roomOptions, null);
-		}
-
-		//------------------------------------------------------------------------------------------------------------------------------//
-		void OnJoinedRoom() {
-
-			//ログ出力
-			Room room = PhotonNetwork.room;
-			PhotonPlayer player = PhotonNetwork.player;
-			Debug.Log("PhotonManager: ルーム入室に成功 部屋名: " + room.Name + " プレイヤーID:" + player.ID);
-			Debug.Log("PhotonManager: 部屋情報: " + room + " ルームマスター: " + player.IsMasterClient);
+			Room room = PhotonNetwork.CurrentRoom;
+			Photon.Realtime.Player player = PhotonNetwork.LocalPlayer;
+			Debug.Log("PhotonLogin: ルーム入室に成功 - " +  room.Name);
+			Debug.Log("PhotonLogin: プレイヤー情報: " +  " プレイヤーNo: "  + player.ActorNumber + " ユーザーID: " + player.UserId + " ルームマスター: " + player.IsMasterClient);
+			Debug.Log("PhotonLogin: ルーム情報: " + room);
 
 			//ステージを初期化する
 			StudioManager.Instance.Setup ();
 			PlayerManager.Instance.Setup ();
 		}
 
-		void OnPhotonJoinRoomFailed() {
-			Debug.Log("PhotonManager: ルーム入室に失敗");
+		public override void OnJoinRandomFailed(short returnCode, string message) {
+			Debug.Log("PhotonManager: ルーム入室に失敗. ルームを新規作成します");
+			PhotonNetwork.CreateRoom(null, ROOM_OPTIONS);
 		}
 
-		void OnPhotonCreateRoomFailed() {
-			Debug.Log("PhotonManager: ルーム作成に失敗");
+		public override void OnCreateRoomFailed(short returnCode, string message) {
+			Debug.Log("PhotonLogin: ルーム作成に失敗");
 		}
-
-		//------------------------------------------------------------------------------------------------------------------------------//
-
 	}
 }

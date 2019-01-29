@@ -8,9 +8,11 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
-namespace VRAcademy {
+using Photon.Pun;
 
-	public class Avatar : Photon.MonoBehaviour {
+namespace VRStudies {
+
+	public class Avatar : MonoBehaviourPunCallbacks, IPunObservable {
 
 		//------------------------------------------------------------------------------------------------------------------------------//
 		float animeSpeed = 1.5f;
@@ -32,7 +34,7 @@ namespace VRAcademy {
 		void Update () {
 
 			// 自分の所有じゃなければスルー
-			if( photonView.isMine == false ){
+			if( photonView.IsMine == false ){
 				return;
 			}
 
@@ -53,13 +55,12 @@ namespace VRAcademy {
 			//自クライアント所有の名前を変更する
 			this.gameObject.name = name;
 			transform.Find ("Name").gameObject.GetComponent<TextMesh>().text = name;
-			//transform.FindChild ("Name").gameObject.GetComponent<TextMesh>().fontSize = 25;
 			transform.Find ("Name").gameObject.GetComponent<TextMesh>().color = new Color( 0.8f, 0, 1 );
 		}
 
-		void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+		public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
 
-			if ( stream.isWriting ) {
+			if ( stream.IsWriting ) {
 
 				// 自クライアント所有のオブジェクトの状態変更を送信
 				string myName = this.gameObject.name;
@@ -80,7 +81,7 @@ namespace VRAcademy {
 		public void ChangeAction( string animeId ){
 
 			// 全てのクライアントにアニメキーを送信
-			PhotonView.Get(this).RPC( "OnChangeAction", PhotonTargets.All, animeId );
+			PhotonView.Get(this).RPC( "OnChangeAction", RpcTarget.All, animeId );
 		}
 
 		[PunRPC]

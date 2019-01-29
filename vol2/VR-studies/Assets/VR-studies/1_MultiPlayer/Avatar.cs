@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
 namespace VRStudies { namespace MultiPlayer {
 
-public class Avatar : Photon.MonoBehaviour {
+public class Avatar : MonoBehaviourPun, IPunObservable {
 
 	//------------------------------------------------------------------------------------------------------------------------------//
 	void Start () {
@@ -12,10 +13,10 @@ public class Avatar : Photon.MonoBehaviour {
 		// Start()は他クライアント所有のオブジェクトが自動で生成された場合にも呼ばれるので注意
 
 		// 自クライアントが生成したオブジェクトの場合のみ実行
-		if( photonView.isMine ){
+		if( photonView.IsMine ){
 
-			//アバターの名前を変更する
-			ChangeMyName( "Player-Id:" + PhotonNetwork.player.ID );
+	    	//アバターの名前を変更する
+			ChangeMyName( "Player-No:" + PhotonNetwork.LocalPlayer.ActorNumber );
 
 			//定期的にアバターの色を変更する
 			StartCoroutine( "ChangeMyColor" );
@@ -26,7 +27,7 @@ public class Avatar : Photon.MonoBehaviour {
 	void Update () {
 
 		// 自クライアントが生成したオブジェクトの場合のみ実行
-		if( photonView.isMine == false ){
+		if( photonView.IsMine == false ){
 			return;
 		}
 
@@ -47,14 +48,14 @@ public class Avatar : Photon.MonoBehaviour {
 	//------------------------------------------------------------------------------------------------------------------------------//
 	void ChangeMyName( string name ) {
 		
-		//自分のアバターの名前を変更する
+        // 自分の名前を変更する
 		this.gameObject.name = name;
 		transform.Find ("NameUI").gameObject.GetComponent<TextMesh>().text = name;
 	}
 
-	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
 
-		if ( stream.isWriting ) {
+		if ( stream.IsWriting ) {
 
 			// 自クライアント所有のオブジェクトの状態変更を送信
 			string myName = this.gameObject.name;
@@ -82,7 +83,7 @@ public class Avatar : Photon.MonoBehaviour {
 
 			//自クライアントを含めた全クライアントに送信
 			Vector3 color = new Vector3( Random.value, Random.value, Random.value );
-			PhotonView.Get(this).RPC( "OnChangeMyColor", PhotonTargets.AllBuffered, color );
+			PhotonView.Get(this).RPC( "OnChangeMyColor", RpcTarget.AllBuffered, color );
 
 			yield return new WaitForSeconds( 2f );
 		}

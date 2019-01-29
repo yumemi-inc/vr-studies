@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-namespace VRAcademy {
+namespace VRStudies {
 
 	//------------------------------------------------------------------------------------------------------------------------------//
 	public class SpotUI : MonoBehaviour, IPointerClickHandler {

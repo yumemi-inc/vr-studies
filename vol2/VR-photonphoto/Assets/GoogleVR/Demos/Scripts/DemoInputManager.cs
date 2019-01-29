@@ -91,7 +91,7 @@ public class DemoInputManager : MonoBehaviour {
     if (playerSettingsHasDaydream() || playerSettingsHasCardboard()) {
       // The list is populated with valid VR SDK(s), pick the first one.
       gvrEmulatedPlatformType =
-        (UnityEngine.VR.VRSettings.supportedDevices[0] == DAYDREAM_DEVICE_NAME) ?
+        (UnityEngine.XR.XRSettings.supportedDevices[0] == DAYDREAM_DEVICE_NAME) ?
         EmulatedPlatformType.Daydream :
         EmulatedPlatformType.Cardboard;
     }
@@ -99,7 +99,7 @@ public class DemoInputManager : MonoBehaviour {
 #else
     viewerPlatform = GvrSettings.ViewerPlatform;
     // First loaded device in Player Settings.
-    string vrDeviceName = UnityEngine.VR.VRSettings.loadedDeviceName;
+    string vrDeviceName = UnityEngine.XR.XRSettings.loadedDeviceName;
     if (vrDeviceName != CARDBOARD_DEVICE_NAME &&
         vrDeviceName != DAYDREAM_DEVICE_NAME) {
       Debug.Log(string.Format("Loaded device was {0} must be one of {1} or {2}",
@@ -148,13 +148,13 @@ public class DemoInputManager : MonoBehaviour {
   }
 
   public static bool playerSettingsHasDaydream() {
-    string[] playerSettingsVrSdks = UnityEngine.VR.VRSettings.supportedDevices;
+    string[] playerSettingsVrSdks = UnityEngine.XR.XRSettings.supportedDevices;
     return Array.Exists<string>(playerSettingsVrSdks,
         element => element.Equals(DemoInputManager.DAYDREAM_DEVICE_NAME));
   }
 
   public static bool playerSettingsHasCardboard() {
-    string[] playerSettingsVrSdks = UnityEngine.VR.VRSettings.supportedDevices;
+    string[] playerSettingsVrSdks = UnityEngine.XR.XRSettings.supportedDevices;
     return Array.Exists<string>(playerSettingsVrSdks,
         element => element.Equals(DemoInputManager.CARDBOARD_DEVICE_NAME));
   }

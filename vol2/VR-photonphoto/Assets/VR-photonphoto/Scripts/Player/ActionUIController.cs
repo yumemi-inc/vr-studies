@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VRAcademy {
+namespace VRStudies {
 
 	public class ActionUIController : MonoBehaviour {
 

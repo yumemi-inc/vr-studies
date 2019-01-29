@@ -9,9 +9,11 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
-namespace VRAcademy {
+using Photon.Pun;
 
-	public class PlayerManager : MonoBehaviour {
+namespace VRStudies {
+
+	public class PlayerManager : MonoBehaviourPunCallbacks {
 
 		//------------------------------------------------------------------------------------------------------------------------------//
 		private static PlayerManager instance = null;
@@ -29,7 +31,7 @@ namespace VRAcademy {
 		};
 
 		//------------------------------------------------------------------------------------------------------------------------------//
-		public string 		       playerName = "プレイヤー名";
+		public string 		       playerName = "プレイヤー";
 		public GameObject 		   avatar;
 		public CameraUIController  cameraUI;
 		public ActionUIController  actionUI;
@@ -50,7 +52,7 @@ namespace VRAcademy {
 			actionUI.Setup( avatar );
 
 			//アバターの名前にプレイヤー名をセットする
-			avatar.gameObject.name = playerName + " - ID:" + PhotonNetwork.player.ID;
+			avatar.gameObject.name = playerName + " No:" + PhotonNetwork.LocalPlayer.ActorNumber;
 			avatar.GetComponent<Avatar>().ChangeName ( avatar.gameObject.name );
 
 			//アバターをランダムな初期位置に移動
